@@ -8,6 +8,16 @@ import (
 	"UrlShortener/validator"
 )
 
+type UrlShortenerHandler struct {
+	service service.UrlShortener
+}
+
+func NewShortenUrlHandler(service service.UrlShortener) *UrlShortenerHandler {
+	return &UrlShortenerHandler{
+		service: service,
+	}
+}
+
 func (s UrlShortenerHandler) ShortenUrl(w http.ResponseWriter, request *http.Request) {
 
 	shortenUrlRequest := &validator.ShortenUrlRequest{}
